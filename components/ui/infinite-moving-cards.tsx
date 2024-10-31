@@ -1,5 +1,6 @@
 "use client";
 
+import { TestimonialNode } from "@/types";
 import { cn } from "@/utils";
 import { Quote } from "lucide-react";
 import Image from "next/image";
@@ -12,11 +13,7 @@ export const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
 }: {
-  items: {
-    quote: string;
-    name: string;
-    title: string;
-  }[];
+  items: TestimonialNode[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
@@ -101,7 +98,7 @@ export const InfiniteMovingCards = ({
               background:
                 "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
             }}
-            key={item.name}
+            key={_idx}
           >
             <Quote width={30} height={30} color="#FCDA05" className="icon" />
             <blockquote>
@@ -123,7 +120,7 @@ export const InfiniteMovingCards = ({
                 />
                 <span className="flex flex-col gap-1">
                   <span className=" text-sm leading-[1.6] text-gray-400 font-normal">
-                    {item.name}
+                    {item.author.name}
                   </span>
                   <span className=" text-sm leading-[1.6] text-gray-400 font-normal">
                     {item.title}

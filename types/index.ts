@@ -16,4 +16,4 @@ export * from "./post";
 
 export * from "./showcase";
 
-export * from "./user";
+export * from "./testimonial";

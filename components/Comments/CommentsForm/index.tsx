@@ -66,20 +66,23 @@ const CommentsForm = ({ slug }: { slug: string }) => {
 
       if (response.error) {
         toast({
-          title: "Submission Failed",
+          title: "Submission Failed. Something went wrong.",
           description: response.error,
           variant: "destructive",
         });
       } else {
         toast({
           title: "Success",
-          description: "Comment submitted successfully!",
+          description:
+            "Comment submitted successfully! We will review your comment shortly.",
+          variant: "success",
         });
       }
     } catch (error) {
       toast({
         title: "Error",
-        description: "An unexpected error occurred. Please try again.",
+        description:
+          "An unexpected error occurred. Please contact your system administrator.",
         variant: "destructive",
       });
     }

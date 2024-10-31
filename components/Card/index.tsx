@@ -1,5 +1,6 @@
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Card() {
   return (
@@ -23,10 +24,12 @@ export function Card() {
           </div>
         </div>
         <div className="text content py-4">
-          <button className="px-4 py-2 text-black font-semibold bg-yellow-100 rounded-lg w-full flex flex-row items-center justify-center cursor-pointer">
-            Let&apos;s connect{" "}
-            <MoveRight width={14} height={10} className="icon ml-2" />
-          </button>
+          <Link href="/contact">
+            <button className="btn-connect">
+              Let&apos;s connect{" "}
+              <MoveRight width={14} height={10} className="icon ml-2" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,10 +1,8 @@
 import { Toaster } from "@/components/ui/toaster";
-import { getNavigationLinks } from "@/services";
-import { NavigationNode } from "@/types";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import DefaultLayout from "@/components/DefaultLayout";
 
+import LayoutWrapper from "@/components/Layout";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,18 +21,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const routes: NavigationNode[] = (await getNavigationLinks()) || [];
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`}>
-        <DefaultLayout
-          classsName="w-full min-h-screen flex flex-col relative"
-          routes={routes}
-        >
-          {children}
-          <Toaster />
-        </DefaultLayout>
+        <Toaster />
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

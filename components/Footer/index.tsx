@@ -6,8 +6,9 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { NavigationNode } from "@/types";
-import { Link, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const Footer = ({ routes }: { routes: NavigationNode[] }) => {
@@ -15,37 +16,27 @@ const Footer = ({ routes }: { routes: NavigationNode[] }) => {
 
   return (
     <div className="bg-gray-800 text-white">
-      <div className="container h-[50rem] md:h-[25rem] py-[8rem] px-4 grid md:grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4">
+      <div className="container h-[40rem] md:h-[25rem] py-12 lg:py-[6rem] px-4 grid md:grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4">
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <CollapsibleTrigger>
             <h2 className="text-xl font-bold">Site Map</h2>
           </CollapsibleTrigger>
           <CollapsibleContent className="text-gray-300 cursor-pointer">
-            <ul>
-              <li>
-                {routes?.map((route) => (
-                  <Link key={route.title} href={route.link}>
+            <ul className="flex flex-col">
+              {routes?.map((route) => (
+                <li
+                  key={route.title}
+                  className="border-b border-gray-700 last:border-b-0 sm:border-0"
+                >
+                  <Link
+                    href={route.link}
+                    className="text-gray-300 hover:text-white block py-2"
+                  >
                     {route.title}
                   </Link>
-                ))}
-              </li>
+                </li>
+              ))}
             </ul>
-            {/* <ul>
-              <li>
-                <a href="/about">About</a>
-              </li>
-              <li>
-                <a href="/team">Team</a>
-              </li>
-              <li>
-                <a href="/blog">Blog</a>
-              </li>
-              <li>
-                <a href="/contact">Contact</a>
-              </li>
-
-              
-            </ul> */}
           </CollapsibleContent>
         </Collapsible>
 

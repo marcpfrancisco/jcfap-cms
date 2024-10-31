@@ -1,6 +1,6 @@
-import { graphQLClient } from "@/utils";
-import { gql } from "graphql-request";
 import { NextResponse } from "next/server";
+import { gql } from "graphql-request";
+import { graphQLClient } from "@/utils";
 
 /** *************************************************************
  * Any file inside the folder pages/api is mapped to /api/* and  *
@@ -9,21 +9,21 @@ import { NextResponse } from "next/server";
 
 // export a function for API route to work
 export async function POST(req: Request) {
-  const { name, email, comment, slug } = await req.json(); // Get the body data
+  const { name, subject, email, message } = await req.json(); // Get the body data
 
   const query = gql`
-    mutation CreateComment(
+    mutation CreateContact(
       $name: String!
+      $subject: String!
       $email: String!
-      $comment: String!
-      $slug: String!
+      $message: String!
     ) {
-      createComment(
+      createContact(
         data: {
           name: $name
+          subject: $subject
           email: $email
-          comment: $comment
-          post: { connect: { slug: $slug } }
+          message: $message
         }
       ) {
         id
@@ -34,16 +34,16 @@ export async function POST(req: Request) {
   try {
     const result = await graphQLClient.request(query, {
       name,
+      subject,
       email,
-      comment,
-      slug,
+      message,
     });
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
-    console.error("Error submitting comment", error);
+    console.error("Error submitting contact form", error);
     return NextResponse.json(
-      { error: "Error submitting comment" },
+      { error: "Error submitting contact form" },
       { status: 500 }
     );
   }

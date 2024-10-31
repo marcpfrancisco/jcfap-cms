@@ -2,7 +2,7 @@ import Navbar from "@/components/Header";
 import React from "react";
 
 import { NavigationNode } from "@/types";
-import Footer from "../Footer";
+import Footer from "../../Footer";
 
 const DefaultLayout = ({
   classsName,

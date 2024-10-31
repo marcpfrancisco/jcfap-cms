@@ -15,8 +15,13 @@ export * from "./Categories";
 export * from "./Comments";
 export * from "./Comments/CommentsForm";
 
+// contact
+export * from "./Contact";
+export * from "./Contact/ContactForm";
+
 // default-layout
-export * from "./DefaultLayout";
+export * from "./Layout";
+export * from "./Layout/DefaultLayout";
 
 // feature
 export * from "./Feature";
