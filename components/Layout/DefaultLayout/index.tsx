@@ -3,6 +3,7 @@ import React from "react";
 
 import { NavigationNode } from "@/types";
 import Footer from "../../Footer";
+import CTA from "@/components/Footer/CTA";
 
 const DefaultLayout = ({
   classsName,
@@ -23,6 +24,7 @@ const DefaultLayout = ({
         <main>{children}</main>
 
         <footer className="mt-auto w-full">
+          <CTA />
           <Footer routes={routes} />
         </footer>
       </div>

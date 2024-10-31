@@ -1,6 +1,5 @@
 import Benefits from "@/components/Benefits";
 import Feature from "@/components/Feature";
-import CTA from "@/components/Footer/CTA";
 import FAQ from "@/components/Footer/FAQ";
 import Hero from "@/components/Hero";
 import Showcase from "@/components/Showcase";
@@ -21,7 +20,6 @@ export default function Home() {
       <Showcase />
       <Testimonials />
       <FAQ />
-      <CTA />
     </div>
   );
 }
