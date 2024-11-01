@@ -79,6 +79,7 @@ const CommentsForm = ({ slug }: { slug: string }) => {
         });
       }
     } catch (error) {
+      console.error(error);
       toast({
         title: "Error",
         description:

@@ -15,7 +15,7 @@ const FAQ = async () => {
   return (
     <section className="container h-[20rem] py-40 lg:py-60 px-4 lg:px-40">
       <div className="text-3xl font-semibold pb-8 mx-auto">
-        <h3>FAQ's</h3>
+        <h3>FAQ&apos;s</h3>
       </div>
 
       <Accordion
@@ -29,6 +29,7 @@ const FAQ = async () => {
             <AccordionContent>
               {faq?.content?.json?.children?.map(
                 (
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   block: { children: any[]; type: string },
                   blockIndex: number
                 ) => (
