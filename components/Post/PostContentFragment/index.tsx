@@ -15,6 +15,7 @@ export type ContentFragmentProps = {
     src?: string;
   };
   type?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   block: any;
 };
 

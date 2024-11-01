@@ -61,6 +61,8 @@ const ContactForm = () => {
         form.reset();
       }
     } catch (error) {
+      console.error(error);
+
       toast({
         title: "Error",
         description:

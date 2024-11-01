@@ -60,7 +60,14 @@ const PostDetails = async ({ post }: { post: PostNode | null }) => {
 
         <div className="content mt-8">
           {post?.content?.json?.children?.map(
-            (block: { children: any[]; type: string }, blockIndex: number) => (
+            (
+              block: {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                children: any[];
+                type: string;
+              },
+              blockIndex: number
+            ) => (
               <React.Fragment key={blockIndex}>
                 {block.children.map((child, childIndex) => (
                   <PostContentFragment

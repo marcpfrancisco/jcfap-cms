@@ -12,6 +12,7 @@ export const CardShowcase = React.memo(
     setHovered,
     className,
   }: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     showcase: any;
     index: number;
     hovered: number | null;
