@@ -2,7 +2,7 @@ import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export function Card() {
+const Card = () => {
   return (
     <div className="max-w-xs w-full group/card">
       <div className="overflow-hidden relative card  h-auto rounded-lg shadow-xl  max-w-sm mx-auto backgroundImage flex flex-col  p-4 bg-white">
@@ -34,4 +34,6 @@ export function Card() {
       </div>
     </div>
   );
-}
+};
+
+export default Card;

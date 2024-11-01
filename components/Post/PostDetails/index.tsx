@@ -14,8 +14,11 @@ const PostDetails = async ({ post }: { post: PostNode | null }) => {
       <div className="flex flex-row items-center">
         {post?.featuredImage?.url ? (
           <Image
-            src={post.featuredImage.url}
-            alt={post.title || "Post image"}
+            src={
+              post.featuredImage.url ||
+              "https://placehold.co/800x600?text=No+Image"
+            }
+            alt={post.title || "No Image"}
             width={800}
             height={600}
             style={{ objectFit: "cover", width: "100%", height: "auto" }}
@@ -38,8 +41,11 @@ const PostDetails = async ({ post }: { post: PostNode | null }) => {
         <div className="flex flex-row items-center justify-center">
           {post?.author?.photo ? (
             <Image
-              src={post?.author?.photo?.url}
-              alt={post?.author?.name}
+              src={
+                post?.author?.photo?.url ||
+                "https://placehold.co/30x30?text=No+Image"
+              }
+              alt={post?.author?.name || "No Image"}
               width={30}
               height={30}
             />

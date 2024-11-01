@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: "Junior Confederation of Finance Association Philippines",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
