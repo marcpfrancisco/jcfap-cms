@@ -49,5 +49,8 @@ export * from "./Showcase";
 // testimonials
 export * from "./Testimonials";
 
+// team
+export * from './TeamMembers';
+
 // shadcn UI components
 export * from "./ui";

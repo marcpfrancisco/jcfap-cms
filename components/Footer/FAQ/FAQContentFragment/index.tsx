@@ -1,5 +1,6 @@
 import { ImageOff } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export type FAQContentFragmentProps = {
@@ -13,8 +14,14 @@ export type FAQContentFragmentProps = {
     height?: number;
     width?: number;
     src?: string;
+    href?: string; // For links
+    type?: string; // For links
+    className?: string;
+    openInNewTab?: boolean;
   };
   type?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  block: any;
 };
 
 const FAQContentFragment: React.FC<FAQContentFragmentProps> = ({
@@ -22,15 +29,33 @@ const FAQContentFragment: React.FC<FAQContentFragmentProps> = ({
   text,
   obj,
   type,
+  block,
 }) => {
-  const formatText = (text: string, obj?: FAQContentFragmentProps["obj"]) => {
+  const formatText = (
+    text: string,
+    obj?: FAQContentFragmentProps["obj"]
+  ): JSX.Element | string => {
     if (!obj) return text;
 
-    let formattedText: JSX.Element | string = text;
+    let formattedText: JSX.Element | string = text || "";
 
-    if (obj.bold) formattedText = <b>{formattedText}</b>;
+    if (obj.bold) formattedText = <strong>{formattedText}</strong>;
     if (obj.italic) formattedText = <em>{formattedText}</em>;
     if (obj.underline) formattedText = <u>{formattedText}</u>;
+
+    // Handle links
+    if (obj.type === "link" && obj.href) {
+      formattedText = (
+        <Link
+          href={obj.href}
+          className={obj.className || "text-blue-500 underline"}
+          target={obj.openInNewTab ? "_blank" : "_self"}
+          rel="noopener noreferrer"
+        >
+          {formattedText}
+        </Link>
+      );
+    }
 
     return formattedText;
   };
@@ -58,18 +83,18 @@ const FAQContentFragment: React.FC<FAQContentFragmentProps> = ({
       );
     case "paragraph":
       return (
-        <p key={index} className="mb-8 indent-10">
+        <p key={index} className="mb-8 indent-10 text-lg text-gray-600">
           {formattedText}
         </p>
       );
     case "image":
-      return obj?.src ? (
+      return block?.src ? (
         <Image
           key={index}
-          alt={obj.title || "Image"}
-          height={obj.height}
-          width={obj.width}
-          src={obj.src}
+          alt={block.title || "Image"}
+          height={block.height}
+          width={block.width}
+          src={block.src}
           className="my-4"
         />
       ) : (
@@ -79,7 +104,7 @@ const FAQContentFragment: React.FC<FAQContentFragmentProps> = ({
         </div>
       );
     default:
-      return <span key={index}>{formattedText}</span>;
+      return <span key={index}>{formatText(text, obj)}</span>;
   }
 };
 

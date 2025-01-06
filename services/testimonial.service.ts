@@ -1,20 +1,21 @@
-import { TestimonialNode, TestimonialQueryResult } from "@/types";
+import { Testimonial, TestimonialQueryResult } from "@/types";
 import { graphqlAPI } from "@/utils";
 import { gql, request } from "graphql-request";
 
-export const getTestimonials = async (): Promise<TestimonialNode[]> => {
+export const getTestimonials = async (): Promise<Testimonial[]> => {
   const query = gql`
     query GetTestimonials {
-      testimonialsConnection {
-        edges {
-          node {
-            author {
-              name
-            }
-            quote
-            title
+      testimonials {
+        id
+        member {
+          id
+          name
+          position
+          image {
+            url
           }
         }
+        quote
       }
     }
   `;
@@ -22,7 +23,7 @@ export const getTestimonials = async (): Promise<TestimonialNode[]> => {
   try {
     const result: TestimonialQueryResult = await request(graphqlAPI, query);
 
-    return result.testimonialsConnection.edges.map((edge: any) => edge.node);
+    return result.testimonials.map((testimonial: any) => testimonial);
   } catch (error) {
     console.error("Error fetching testimonials:", error);
     return [];

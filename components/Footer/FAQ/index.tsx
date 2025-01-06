@@ -10,10 +10,10 @@ import React from "react";
 import FAQContentFragment from "./FAQContentFragment";
 
 const FAQ = async () => {
-  const FAQs = (await getFAQs()) || [];
+  const faqs = (await getFAQs()) || [];
 
   return (
-    <section className="container h-[20rem] py-40 lg:py-60 px-4 lg:px-40">
+    <section className="container py-10 lg:py-30 px-4 lg:px-40">
       <div className="text-3xl font-semibold pb-8 mx-auto">
         <h3>FAQ&apos;s</h3>
       </div>
@@ -23,28 +23,55 @@ const FAQ = async () => {
         collapsible
         className="flex flex-col justify-center w-full max-w-5xl"
       >
-        {FAQs?.map((faq, index) => (
+        {faqs?.map((faq, index) => (
           <AccordionItem key={index} value={faq.title}>
-            <AccordionTrigger>{faq.title}</AccordionTrigger>
+            <AccordionTrigger className="text-lg">{faq.title}</AccordionTrigger>
             <AccordionContent>
               {faq?.content?.json?.children?.map(
-                (
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (block: any, blockIndex: any) => {
+                  // Combine all children with the same type into a single group
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  block: { children: any[]; type: string },
-                  blockIndex: number
-                ) => (
-                  <React.Fragment key={blockIndex}>
-                    {block.children.map((child, childIndex) => (
-                      <FAQContentFragment
-                        key={childIndex}
-                        index={childIndex}
-                        text={child.text || ""}
-                        obj={child}
-                        type={block.type}
-                      />
-                    ))}
-                  </React.Fragment>
-                )
+                  const paragraphs: any = [];
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  let currentParagraphGroup: any = [];
+
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  block.children.forEach((child: any, index: any) => {
+                    if (block.type === "paragraph") {
+                      currentParagraphGroup.push(child);
+                    } else {
+                      if (currentParagraphGroup.length) {
+                        paragraphs.push(currentParagraphGroup);
+                        currentParagraphGroup = [];
+                      }
+                      paragraphs.push([child]);
+                    }
+
+                    // Push any remaining group
+                    if (
+                      index === block.children.length - 1 &&
+                      currentParagraphGroup.length
+                    ) {
+                      paragraphs.push(currentParagraphGroup);
+                    }
+                  });
+
+                  return (
+                    <React.Fragment key={blockIndex}>
+                      {paragraphs.map((group: any, groupIndex: any) => (
+                        <FAQContentFragment
+                          key={groupIndex}
+                          index={groupIndex}
+                          text={group.map((item: any) => item.text).join(" ")}
+                          obj={group[0]}
+                          type={block.type}
+                          block={block}
+                        />
+                      ))}
+                    </React.Fragment>
+                  );
+                }
               )}
             </AccordionContent>
           </AccordionItem>
