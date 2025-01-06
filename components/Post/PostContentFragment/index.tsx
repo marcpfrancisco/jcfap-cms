@@ -31,7 +31,7 @@ const PostContentFragment: React.FC<ContentFragmentProps> = ({
 
     let formattedText: JSX.Element | string = text;
 
-    if (obj.bold) formattedText = <b>{formattedText}</b>;
+    if (obj.bold) formattedText = <strong>{formattedText}</strong>;
     if (obj.italic) formattedText = <em>{formattedText}</em>;
     if (obj.underline) formattedText = <u>{formattedText}</u>;
 

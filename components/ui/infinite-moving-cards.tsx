@@ -1,8 +1,8 @@
 "use client";
 
-import { TestimonialNode } from "@/types";
+import { POSITION_MAP, Testimonial } from "@/types";
 import { cn } from "@/utils";
-import { Quote } from "lucide-react";
+import { ImageOff, Quote } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -13,7 +13,7 @@ export const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
 }: {
-  items: TestimonialNode[];
+  items: Testimonial[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
@@ -110,20 +110,28 @@ export const InfiniteMovingCards = ({
                 {item.quote}
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
-                <Image
-                  height={60}
-                  width={60}
-                  alt="Avatar"
-                  style={{ width: "auto", height: "auto" }}
-                  src="/assets/images/patrick.png"
-                  className="rounded-full border-2 object-cover mr-4"
-                />
+                {item.member?.image?.url ? (
+                  <Image
+                    height={60}
+                    width={60}
+                    alt="Avatar"
+                    style={{ width: "auto", height: "auto" }}
+                    src={item.member?.image?.url}
+                    className="rounded-full border-2 object-cover mr-4"
+                  />
+                ) : (
+                  <ImageOff
+                    size={60}
+                    className="rounded-full border-2 object-cover mr-4 text-gray-500"
+                  />
+                )}
+
                 <span className="flex flex-col gap-1">
                   <span className=" text-sm leading-[1.6] text-gray-400 font-normal">
-                    {item.author.name}
+                    {item.member?.name}
                   </span>
                   <span className=" text-sm leading-[1.6] text-gray-400 font-normal">
-                    {item.title}
+                    {POSITION_MAP[item.member?.position] || "Member"}
                   </span>
                 </span>
               </div>

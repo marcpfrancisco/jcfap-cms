@@ -1,20 +1,11 @@
-import { Author } from "./author";
+import { Member } from "./member";
 
-export interface TestimonialNode {
-  author: Author;
+export interface Testimonial {
+  member: Member;
   quote: string;
-  title: string;
-}
-
-export interface TestimonialEdge {
-  node: TestimonialNode;
-}
-
-export interface TestimonialsConnection {
-  edges: TestimonialEdge[];
 }
 
 export interface TestimonialQueryResult {
-  testimonialsConnection: TestimonialsConnection;
-  testimonial: TestimonialNode;
+  testimonial: Testimonial;
+  testimonials: Testimonial[];
 }

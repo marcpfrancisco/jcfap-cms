@@ -1,9 +1,9 @@
 import { InfiniteMovingCards } from "@/components/ui";
 import { getTestimonials } from "@/services";
-import { TestimonialNode } from "@/types";
+import { Testimonial } from "@/types";
 
 const Quote = async () => {
-  const testimonials: TestimonialNode[] = (await getTestimonials()) || [];
+  const testimonials: Testimonial[] = (await getTestimonials()) || [];
 
   return (
     <>
