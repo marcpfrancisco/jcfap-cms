@@ -10,7 +10,7 @@ const FeatureBlock = ({ features }: { features: FeatureNode[] }) => {
           key={index}
           className="feature block sm:grid sm:grid-cols-2 px-4 sm:px-0"
         >
-          <div className="feature__content">
+          <div className="feature__content" data-aos="zoom-in">
             <h3 className="text-black-100 font-bold text-lg">
               {feature?.title}
             </h3>
@@ -18,6 +18,7 @@ const FeatureBlock = ({ features }: { features: FeatureNode[] }) => {
           </div>
 
           <Image
+            data-aos="zoom-in-up"
             className="feature__img rounded-xl"
             width={700}
             height={470}

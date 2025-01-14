@@ -5,7 +5,7 @@ const Showcase = async () => {
   const showcases = (await getShowcases()) || [];
 
   return (
-    <section className="showcase py-8 px-4 w-full">
+    <section className="showcase py-14 px-4 w-full">
       <FocusCards showcases={showcases} />
     </section>
   );

@@ -1,3 +1,5 @@
+@import 'aos/dist/aos.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -78,5 +80,21 @@
   /* Footer  */
   .footer a {
     @apply text-gray-300 transition duration-300 hover:text-white;
+  }
+
+  /* Skewed Section  */
+  .skewed {
+    --padding-vertical: 5rem;
+    padding: var(--padding-vertical) 2rem;
+  }
+
+  .skewed-right,
+  .skewed-left {
+    padding-bottom: calc(var(--padding-vertical) + 4rem);
+  }
+
+  /* Skewed Right  */
+  .skewed-right {
+    clip-path: polygon(0 0,100% 0,100% 100%,0 95%);
   }
 }

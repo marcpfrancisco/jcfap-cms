@@ -15,8 +15,8 @@ const Footer = ({ routes }: { routes: NavigationNode[] }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className="bg-gray-800 text-white">
-      <div className="container h-[50rem] md:h-[25rem] py-12 lg:py-[6rem] px-4 grid md:grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4">
+    <div className="bg-gray-800 text-white py-6">
+      <div className="container h-[50rem] md:h-[25rem] py-[5rem] lg:py-[6rem] px-4 grid md:grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4">
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <CollapsibleTrigger>
             <h2 className="text-xl font-bold">Site Map</h2>
