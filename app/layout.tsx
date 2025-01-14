@@ -24,10 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <GoogleTagManager
-        gtmId="G-4XDYR6WFE3"
-        gtmScriptUrl="https://www.googletagmanager.com/gtag/js?id=G-4XDYR6WFE3"
-      />
+      <GoogleTagManager gtmId="GTM-MMDBQ2FD" />
       <body className={`${inter.variable} antialiased`}>
         <Toaster />
         <LayoutWrapper>{children}</LayoutWrapper>
