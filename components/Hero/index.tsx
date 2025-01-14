@@ -25,7 +25,10 @@ const Hero = ({
       <div className="max-w-7xl mx-auto h-[30rem] flex flex-col md:flex-row justify-between items-center">
         {/* Left Column: Text Content */}
         <div className="max-w-[35rem] py-4 text-center md:text-justify">
-          <h1 className="text-4xl md:text-5xl font-bold text-start text-white ">
+          <h1
+            data-aos="zoom-in-up"
+            className="text-4xl md:text-5xl font-bold text-start text-white "
+          >
             {heroTitle}
           </h1>
           <p className="mt-4 text-white font-normal">{heroDescription}</p>
@@ -33,7 +36,7 @@ const Hero = ({
 
         {/* Right Column: Image and Card */}
         {isHomePage && (
-          <div className="py-4">
+          <div data-aos="zoom-in" className="py-4">
             <Card />
           </div>
         )}

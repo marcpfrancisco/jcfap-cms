@@ -11,7 +11,7 @@ const Quote = async () => {
         <InfiniteMovingCards
           items={testimonials}
           direction="right"
-          speed="slow"
+          speed="normal"
         />
       </div>
 
@@ -19,7 +19,7 @@ const Quote = async () => {
         <InfiniteMovingCards
           items={testimonials}
           direction="left"
-          speed="slow"
+          speed="normal"
         />
       </div>
     </>
