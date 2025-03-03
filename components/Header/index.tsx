@@ -74,9 +74,7 @@ const Navbar = ({ routes }: { routes: NavigationNode[] }) => {
                 ) : (
                   <Menu
                     className={`w-6 h-6 ${
-                      scrolledPast && isBlogDetailsPage
-                        ? "text-gray-700"
-                        : "text-gray-50"
+                      scrolledPast ? "text-gray-900" : "text-gray-50"
                     }`}
                   />
                 )}

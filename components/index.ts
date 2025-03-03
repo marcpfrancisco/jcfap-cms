@@ -36,6 +36,8 @@ export * from "./Footer/FAQ";
 export * from "./Header/MobileNav";
 export * from "./Header/Nav";
 
+export * from "./Partners";
+
 // posts
 export * from "./Post/PostCard";
 export * from "./Post/PostContentFragment";
@@ -50,7 +52,7 @@ export * from "./Showcase";
 export * from "./Testimonials";
 
 // team
-export * from './TeamMembers';
+export * from "./TeamMembers";
 
 // shadcn UI components
 export * from "./ui";

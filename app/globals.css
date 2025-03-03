@@ -1,4 +1,4 @@
-@import 'aos/dist/aos.css';
+@import "aos/dist/aos.css";
 
 @tailwind base;
 @tailwind components;
@@ -42,7 +42,7 @@
   /* Feature content  */
   .feature {
     gap: 4rem 2rem;
-    margin: 4rem 0;
+    margin: 2rem 0;
   }
 
   .feature:first-of-type {
@@ -95,6 +95,6 @@
 
   /* Skewed Right  */
   .skewed-right {
-    clip-path: polygon(0 0,100% 0,100% 100%,0 95%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
   }
 }

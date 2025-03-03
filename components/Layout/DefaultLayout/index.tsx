@@ -1,5 +1,4 @@
 import Navbar from "@/components/Header";
-import React from "react";
 
 import { NavigationNode } from "@/types";
 import Footer from "../../Footer";
@@ -25,6 +24,7 @@ const DefaultLayout = ({
 
         <footer className="mt-auto w-full">
           <CTA />
+
           <Footer routes={routes} />
         </footer>
       </div>
