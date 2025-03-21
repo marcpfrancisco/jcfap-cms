@@ -28,7 +28,7 @@ const HeaderMobileNav: React.FC<MobileMenuProps> = ({
           ))}
         </div>
 
-        <a className="btn-connect !py-4 !rounded-[4rem]">
+        <a className="btn-connect !py-4 !rounded-[4rem] h-12">
           Let&apos;s connect{" "}
           <MoveRight width={14} height={10} className="icon ml-2" />
         </a>

@@ -58,14 +58,16 @@ const Footer = ({ routes }: { routes: NavigationNode[] }) => {
         </section>
 
         <div className="md:-order-1 md:mt-[1rem] mt-[5rem] place-self-center md:place-self-start">
-          <Image
-            width={230}
-            height={100}
-            style={{ width: "auto", height: "auto" }}
-            className="max-w-[230px]"
-            src="/assets/images/logo-alt.png"
-            alt="Footer Brand"
-          />
+          <Link href="/">
+            <Image
+              width={230}
+              height={100}
+              style={{ width: "auto", height: "auto" }}
+              className="max-w-[230px]"
+              src="/assets/images/logo-alt.png"
+              alt="Footer Brand"
+            />
+          </Link>
         </div>
       </div>
     </div>
